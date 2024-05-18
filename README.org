@@ -1,0 +1,25 @@
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil expand-links:t f:t inline:t num:t p:nil pri:nil prop:nil
+#+options: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: SICP
+#+date: <2024-05-17 Fri>
+#+author: chu the pup
+#+email: chu@dogboner.xyz
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.7)
+#+cite_export:
+* Setup
+1. Install Racket
+2. Install ~lang/sicp~
+   #+begin_src sh
+raco pkg install sicp
+   #+end_src
+* Chapter 1
+** Exercise 1.1
+#+begin_src racket :lang sicp
+(+ 1 1)
+#+end_src
+
