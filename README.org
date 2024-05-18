@@ -14,7 +14,6 @@
 * Setup
 1. Install Racket
 2. Install ~lang/sicp~
-
    #+begin_src sh
 raco pkg install sicp
    #+end_src
