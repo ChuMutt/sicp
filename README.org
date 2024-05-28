@@ -316,8 +316,12 @@ then loops forever after.
 (define (improve guess x)
   (average guess (/ x guess)))
 
+(define (square x)
+  (* x x))
+
+;; better for small numbers, less accurate for larger numbers
 (define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
+  (< (abs (- (square guess) x)) 0.0000000001)) ; 0.01 is too small, 0.001 gets closer, etc.
 
 (define (sqrt-iter guess x)
   (if (good-enough? guess x)
@@ -327,4 +331,17 @@ then loops forever after.
 
 (define (sqrt x)
   (sqrt-iter 1.0 x))
+
+(sqrt 52)
+7.21110255093
+
+(sqrt 2)
+1.41421356237
+
 #+end_src
+
+#+RESULTS:
+: 7.211102550927983
+: 7.21110255093
+: 1.4142135623746899
+: 1.41421356237
