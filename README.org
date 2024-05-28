@@ -26,7 +26,7 @@
   - [[#done-ex-14][DONE Ex. 1.4]]
   - [[#done-ex-15][DONE Ex. 1.5]]
   - [[#done-ex-16][DONE Ex. 1.6]]
-  - [[#todo-ex-17][TODO Ex. 1.7]]
+  - [[#done-ex-17][DONE Ex. 1.7]]
 
 * 1. Building Abstractions with Procedures
 :PROPERTIES:
@@ -299,7 +299,7 @@ roots?  Explain.
 
 It creates an infinite loop. Any function supplied to new-if will be applied, sqrt-iter
 then loops forever after.
-** TODO Ex. 1.7
+** DONE Ex. 1.7
 :PROPERTIES:
 :ID:       a51d676d-5ff2-440f-8a4d-ea5c355ab907
 :END:
