@@ -1,20 +1,32 @@
 :PROPERTIES:
 :ID:       ba9f538a-c5c5-4e21-a2c9-cec8aed13e1b
 :END:
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil expand-links:t f:t inline:t num:nil p:nil pri:nil prop:nil
+#+options: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
 #+title: SICP
+#+date: <2024-05-17 Fri>
+#+author: chu the pup
+#+email: chu@dogboner.xyz
 #+description: 20221206014026-sicp.org
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.7)
+#+cite_export:
 * Contents :toc:
 :PROPERTIES:
 :ID:       139f3960-a140-49a5-82f3-57edce5f4c19
 :END:
 - [[#1-building-abstractions-with-procedures][1. Building Abstractions with Procedures]]
-  - [[#ex-11][Ex. 1.1]]
-  - [[#ex-12][Ex. 1.2]]
-  - [[#ex-13][Ex. 1.3]]
-  - [[#ex-14][Ex. 1.4]]
-  - [[#ex-15][Ex. 1.5]]
-  - [[#ex-16][Ex. 1.6]]
-  - [[#ex-17][Ex. 1.7]]
+  - [[#done-ex-11][DONE Ex. 1.1]]
+  - [[#done-ex-12][DONE Ex. 1.2]]
+  - [[#done-ex-13][DONE Ex. 1.3]]
+  - [[#done-ex-14][DONE Ex. 1.4]]
+  - [[#done-ex-15][DONE Ex. 1.5]]
+  - [[#done-ex-16][DONE Ex. 1.6]]
+  - [[#todo-ex-17][TODO Ex. 1.7]]
 
 * 1. Building Abstractions with Procedures
 :PROPERTIES:
