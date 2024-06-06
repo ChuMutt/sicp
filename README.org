@@ -66,10 +66,8 @@
 *Exercise 1.1:* Below is a sequence of expressions.  What is the result printed by the interpreter in response to each expression? Assume that the sequence is to be evaluated in the order in which it is presented.
 #+end_quote
 
-#+begin_src racket
-#lang sicp
-
-10 ; 10.
+#+begin_src racket :lang sicp
+10 ; 10
 
 (+ 5 3 4) ; 5 + 3 + 4
 
@@ -117,9 +115,7 @@ form.
             3(6 - 2)(2 - 7)
 #+end_quote
 
-#+begin_src racket
-#lang sicp
-
+#+begin_src racket :lang sicp
 (/ (+ 5 4 (- 2 (- 3 (+ 6 4/5)))) (* 3 (- 6 2) (- 2 7)))
 #+end_src
 
@@ -144,9 +140,7 @@ form.
 | all three numbers are equal to one another      | sum-square any two variables    |
 | all three numbers are equal to zero             | return 0 or throw an error (not implemented here) |
 
-#+begin_src racket
-#lang sicp
-
+#+begin_src racket :lang sicp
 (define (square a)
   (* a a))
 
@@ -196,9 +190,7 @@ form.
 *Exercise 1.4:* Observe that our model of evaluation allows for combinations whose operators are compound expressions.  Use this observation to describe the behavior of the following procedure:
 #+end_quote
 
-#+begin_src racket
-#lang sicp
-
+#+begin_src racket :lang sicp
 (define (a-plus-abs-b a b)
   ((if (> b 0) + -) a b))
 
@@ -211,9 +203,7 @@ form.
 If ~b~ is greater than ~0~, add ~a~ and ~b~.
 If ~b~ is a negative number, negate it, i.e.,:
 
-#+begin_src racket
-#lang sicp
-
+#+begin_src racket :lang sicp
 (- -15)
 #+end_src
 
@@ -233,9 +223,7 @@ In other words, this is making use of unary operators.
 *Exercise 1.5:* Ben Bitdiddle has invented a test to determine whether the interpreter he is faced with is using applicative-order evaluation or normal-order evaluation.  He defines the following two procedures:
 #+end_quote
 
-#+begin_src racket :eval no
-#lang sicp
-
+#+begin_src racket :eval no :lang sicp
 (define (p) (p))
 
 (define (test x y)
@@ -261,7 +249,7 @@ Applicative-order evaluation: ~(test 0 (p))~ makes it hang / get stuck in a loop
 
 A normal order-evaluator would do this instead:
 
-#+begin_example racket
+#+begin_src racket :lang sicp
 (test 0 (p))
 
 (if (= 0 0)
@@ -272,7 +260,7 @@ A normal order-evaluator would do this instead:
      0
      (p))
 0
-#+end_example
+#+end_src
 
 *** 1.1.7 Example: Square Roots by Newton's Method
 :PROPERTIES:
@@ -287,19 +275,17 @@ A normal order-evaluator would do this instead:
 *Exercise 1.6:* Alyssa P. Hacker doesn't see why `if' needs to be provided as a special form.  "Why can't I just define it as an ordinary procedure in terms of `cond'?" she asks.  Alyssa's friend Eva Lu Ator claims this can indeed be done, and she defines a new version of `if':
 #+end_quote
 
-#+begin_example racket
+#+begin_src racket :lang sicp
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
         (else else-clause)))
-#+end_example
+#+end_src
 
 #+begin_quote
 Eva demonstrates the program for Alyssa:
 #+end_quote
 
-#+begin_src racket
-#lang sicp
-
+#+begin_src racket :lang sicp
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
         (else else-clause)))
@@ -315,13 +301,13 @@ Eva demonstrates the program for Alyssa:
 
 Delighted, Alyssa uses `new-if' to rewrite the square-root program:
 
-#+begin_example racket
+#+begin_src racket :lang sicp
 (define (sqrt-iter guess x)
   (new-if (good-enough? guess x)
           guess
           (sqrt-iter (improve guess x)
                      x)))
-#+end_example
+#+end_src
 
 What happens when Alyssa attempts to use this to compute square
 roots?  Explain.
@@ -336,9 +322,7 @@ then loops forever after.
 *Exercise 1.7:* The `good-enough?' test used in computing square roots will not be very effective for finding the square roots of very small numbers.  Also, in real computers, arithmetic operations are almost always performed with limited precision.  This makes our test inadequate for very large numbers.  Explain these statements, with examples showing how the test fails for small and large numbers.  An alternative strategy for implementing `good-enough?' is to watch how `guess' changes from one iteration to the next and to stop when the change is a very small fraction of the guess.  Design a square-root procedure that uses this kind of end test.  Does this work better for small and large numbers?
 #+end_quote
 
-#+begin_src racket :
-#lang sicp
-
+#+begin_src racket :lang sicp
 (define (average x y)
   (/ (+ x y) 2))
 
@@ -659,6 +643,41 @@ Answer to the seventh one is given in the book, as in, it is not an actual exerc
 :PROPERTIES:
 :ID:       c1710638-3b77-46eb-838b-e6262914de1d
 :END:
+Exercise 1.11 A function f is defined by the rule that rules f(n)=n if n<3 and f(n)=f(n−1)+2f(n−2)+3f(n−3) if n≥3.
+
+Write a procedure that computes f by means of a recursive process.
+#+begin_src racket :lang sicp
+(define (f n)
+  (cond ((<  n 3) n)
+        ((>= n 3) (+ (* 3 (f (- n 3)))
+                     (* 2 (f (- n 2)))
+                     (f (- n 1))))))
+#+end_src
+Write a procedure that computes f by means of an iterative process.
+Exercise 1.11 A function f is defined by the rule that rules f(n)=n if n<3 and f(n)=f(n−1)+2f(n−2)+3f(n−3) if n≥3.
+f(0) = 0
+f(1) = 1
+f(2) = 2
+f(3) = f(3-1)+2f(3-2)+3f(3-3)
+     = f(2)+2f(1)+3f(0)
+     = 2+(2*1)+(3*0)
+     = 2+2+0
+     = 4
+f(4) = f(4-1)+2f(4-2)+3f(4-3)
+     = f(3) +2f(2)+3f(1)
+     = (1*4)+(2*2)+(3*1)
+     = 4    + 4   + 3
+     = 8    + 3
+     = 11
+#+begin_src racket :lang sicp
+;; TODO
+(define (f n)
+  (fi (a b n)))
+
+(define (fi a b c)
+  (cond ((<  c 3) n)
+        ((>= c 3) ;; need find state variables (where a = (f 1); b = (f 0), or maybe a = (f 3); b = (f 2)?)
+#+end_src
 **** TODO Ex. 1.12
 :PROPERTIES:
 :ID:       8a169f9c-c4cc-4758-8267-5e13f4293769
@@ -679,7 +698,7 @@ Answer to the seventh one is given in the book, as in, it is not an actual exerc
 :PROPERTIES:
 :ID:       2730882c-15c2-42dd-9b4e-f697b17eec8a
 :END:
-*** 1.2.4 Exponentation
+*** 1.2.4 Exponentiation
 :PROPERTIES:
 :ID:       7b225671-49b0-47ad-b3b7-e7181db2d220
 :END:
