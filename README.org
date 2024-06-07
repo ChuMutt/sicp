@@ -681,6 +681,26 @@ f(4) = f(4-1)+2f(4-2)+3f(4-3)
   (cond ((<  c 3) n)
         ((>= c 3) ;; need find state variables (where a = (f 1); b = (f 0), or maybe a = (f 3); b = (f 2)?)
 #+end_src
+
+Fri Jun  7 08:32:02 2024
+
+#+begin_src racket :lang sicp
+(define (fr n)
+  (if (<= n 3) n
+      (> n 3) (+ (* 3 (f (- n 3)))
+                 (* 2 (f (- n 2)))
+                 (f (- n 1)))))
+
+(define (f n)
+  (f-iter 10 3 n))
+
+(define (f-iter a b count)
+  (if (<= count 3)
+      b
+      (f-iter (+ a b) a (- count 1))))
+
+#+end_src
+
 **** TODO Ex. 1.12
 :PROPERTIES:
 :ID:       8a169f9c-c4cc-4758-8267-5e13f4293769
