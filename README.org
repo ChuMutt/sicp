@@ -397,6 +397,9 @@ The actual answer is 1.25992104989, but, close enough!
 :PROPERTIES:
 :ID:       efbc1799-cb3c-4fed-91d9-76816b9cebad
 :END:
+
+The Berkeley series of lectures over the SICP (as recorded from a 2010 webclass) has the professor there noting on this section and more or less stating that this is much less important "these days" (2010) and that, for the most part, one can get by without having to worry too much about these efficiencies when said worry isn't warranted. Id est, someone programming complex, cutting edge live-rendered 3D graphics for a video game /will/ want to worry about making their code more efficient in order to keep up the phantasmagoria, whereas someone modeling a logic system probably won't have to worry about such things.
+
 **** DONE Ex. 1.9
 :PROPERTIES:
 :ID:       acde993a-1aa0-4afa-a558-9953bec4cc5d
