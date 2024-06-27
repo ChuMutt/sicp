@@ -686,11 +686,11 @@ Fri Jun  7 08:32:02 2024
 
 #+begin_src racket :lang sicp
 (define (fr n)
-  (if (<= n 3) n
-      (> n 3) (+ (* 3 (f (- n 3)))
-                 (* 2 (f (- n 2)))
-                 (f (- n 1)))))
-
+  (cond ((<= n 3) n)
+      ((> n 3) (+ (* 3 (fr (- n 3)))
+                 (* 2 (fr (- n 2)))
+                 (fr (- n 1))))))
+(fr 5)
 (define (f n)
   (f-iter 10 3 n))
 
@@ -701,10 +701,58 @@ Fri Jun  7 08:32:02 2024
 
 #+end_src
 
+#+RESULTS:
+: 22
+Fri Jun  7 08:40:53 2024
+
+#+begin_src racket :lang sicp
+(define (f n)
+  (if (< n 3)
+      n
+      (+ (* 3 (f (- n 3)))
+         (* 2 (f (- n 2)))
+              (f (- n 1)))))
+
+(define (f n)
+  (f-iter 10 3 n))
+
+(define (f-iter a b count)
+  (if (< count 3)
+      count
+      (f-iter (+ a b) a (- count 1))))
+#+end_src
+I'm unsure if my interative procedure is correct.
 **** TODO Ex. 1.12
 :PROPERTIES:
 :ID:       8a169f9c-c4cc-4758-8267-5e13f4293769
 :END:
+n = row
+k = col
+Start counting at 0 programmatically, display 1.
+
+#+begin_src racket :lang sicp
+(define (pascal row col)
+  (cond ((< (or row col) 0) 0)
+        ((= (or row col) 0) 1)
+        ((= col 0) 1)
+        ((= row col) 1)
+        (else (+ (pascal (- row 1) (- col 1))
+                 (pascal (- row 1) col)))))
+
+(pascal 0 0)
+(pascal 1 0) (pascal 1 1)
+(pascal 2 0) (pascal 2 1) (pascal 2 2)
+;; (pascal 3 0) (pascal 3 1) (pascal 3 2) (pascal 3 3)
+#+end_src
+
+#+RESULTS:
+: 1
+: 1
+: 1
+: 1
+: 2
+: 1
+
 **** TODO Ex. 1.13
 :PROPERTIES:
 :ID:       a7436223-68e1-49ba-bcb9-e6bc376413d2
